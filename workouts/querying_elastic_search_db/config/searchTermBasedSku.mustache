@@ -1,0 +1,9 @@
+{
+    "query": {
+        "multi_match": {
+            "query" : "{{searchTerm}}",
+            "fields" : ["brand_name","product_name","product_details","product_type","category_id_with_name"]
+        }
+    },
+ "_source" : ["product_id","sku_id","product_type","brand_name","product_name","product_overview","unitprice","product_details","search_major_syn","image_url","product_seo_url","spc_price_d","most_viewed"]
+}

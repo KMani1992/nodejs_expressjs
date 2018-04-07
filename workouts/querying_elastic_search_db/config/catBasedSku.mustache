@@ -1,0 +1,26 @@
+{
+  "query": {
+    "bool": {
+      "must": {
+        "has_child": {
+          "type": "productsku",
+          "query": {
+            "match_all": {}
+          },
+          "inner_hits": {
+            "_source" : ["product_id","sku_id","product_type","brand_name","product_name","product_overview","unitprice","product_details","search_major_syn","image_url","product_seo_url","spc_price_d"]
+          }
+        }
+      },
+      "filter": {
+        "has_child": {
+          "type": "productcategory",
+          "query": {
+            "term": {"category_id_tier{{cat_pos}}": {"value": "{{cat_id}}"}} 
+          }
+        }
+      }
+    }
+  },
+  "_source" : [""]
+}

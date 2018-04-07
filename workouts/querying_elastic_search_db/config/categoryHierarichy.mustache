@@ -1,0 +1,24 @@
+{ 
+    
+    "aggs": {
+        "category1": {
+            "terms": {
+                "script" : "doc['category_id_tier1'].value + '||'  + doc['category_name_tier1.exact'].value"
+            },
+            "aggs": {
+                "category2": {
+                    "terms": {
+                        "script" : "doc['category_id_tier2'].value + '||'  + doc['category_name_tier2.exact'].value"
+                    },
+                    "aggs": {
+                        "category3": {
+                            "terms": {
+                                "script" : "doc['category_id_tier3'].value + '||'  + doc['category_name_tier3.exact'].value"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
